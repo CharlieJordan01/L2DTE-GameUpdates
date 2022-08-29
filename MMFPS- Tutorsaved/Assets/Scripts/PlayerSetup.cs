@@ -46,9 +46,9 @@ public class PlayerSetup : NetworkBehaviour
             if (ui == null)
                 Debug.LogError("No PlayerUI component on the PlayerUI prefab");
             ui.SetController(GetComponent<PlayerController>());
-        }
 
-        GetComponent<Player>().Setup();
+            GetComponent<Player>().SetupPlayer();
+        }
     }
 
     void SetLayerRecursively (GameObject obj, int newLayer)
@@ -89,7 +89,11 @@ public class PlayerSetup : NetworkBehaviour
     {
         Destroy(playerUIInstance);
 
-        GameManager.instance.SetSceneCamerActive(true);
+        if(isLocalPlayer)
+        {
+            GameManager.instance.SetSceneCamerActive(true);
+
+        }
 
         GameManager.UnRegisterPlayer(transform.name);
     }
