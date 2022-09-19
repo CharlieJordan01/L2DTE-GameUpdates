@@ -9,8 +9,7 @@ public class Util
 
         _obj.layer = _newLayer;
 
-        foreach(Transform _child in _obj.transform)
-        {
+        foreach(Transform _child in _obj.transform){
             if (_child == null)
                 continue;
 
